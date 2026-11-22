@@ -23,7 +23,7 @@ export type Line = { text: string; mood?: Mood; auto?: number }
 
 export const people = {
   /** ✏️ PERSONALIZE — nome dela. Se ficar vazio, o robô a chama de "Agente". */
-  herName: '',
+  herName: 'Luisa',
   /** ✏️ PERSONALIZE — seu nome (aparece no final e em algumas piadas). */
   myName: 'Thiago',
   /** Nome do robô. */
