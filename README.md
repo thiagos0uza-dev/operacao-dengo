@@ -18,9 +18,10 @@ Tudo fica em `src/content/config.ts` — procure por `✏️ PERSONALIZE`:
 - texto do pedido, frase final, mensagem da sala secreta, cores.
 
 ## Publicar no GitHub Pages
-1. Crie um repositório no GitHub e faça push da branch `main`.
-2. No repositório: **Settings → Pages → Source: GitHub Actions**.
-3. Cada push na `main` publica em `https://USUARIO.github.io/NOME-DO-REPOSITORIO/` (o caminho base é configurado sozinho pelo workflow).
+Publicado em https://thiagos0uza-dev.github.io/operacao-dengo/
+
+Para atualizar depois de editar: `npm run deploy` (gera o build e envia para a branch `gh-pages`).
+Alternativa com GitHub Actions: `docs/deploy-actions.yml` (exige token com escopo `workflow`; mova para `.github/workflows/`).
 
 ## Segredos
 Clique muitas vezes no robô · 3 toques no pôster da Central · 3 toques nos planetas · 3 toques no logo "OP. DENGO" · tente mudar a "Probabilidade de saudade" · Milk Moo infinito.
