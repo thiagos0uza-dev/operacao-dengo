@@ -6,6 +6,7 @@ import { useGame } from '../../game/state/store'
 import { useUIValue } from '../../game/state/ui'
 import { answer, enterFinale, enterNo, enterYes } from './script'
 import { todayBR } from '../../utils/device'
+import { NoThief } from './NoThief'
 
 export default function FinaleOverlay() {
   const phase = useGame((s) => s.phase)
@@ -95,9 +96,7 @@ function Question() {
             <button className="btn answer yes" onClick={() => answer('yes')} data-testid="answer-yes">
               {T.yes}
             </button>
-            <button className="btn answer no" onClick={() => answer('no')} data-testid="answer-no">
-              {T.no}
-            </button>
+            <NoThief onNo={() => answer('no')} />
           </motion.div>
         )}
       </AnimatePresence>

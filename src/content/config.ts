@@ -420,6 +420,21 @@ export const finale = {
   question: 'Você gostaria de namorar comigo?',
   yes: 'SIM, VAMOS TENTAR ❤️',
   no: 'NÃO, MAS O ROBÔ CONTINUA SENDO MEU AMIGO',
+  /** O R-404 tenta confiscar o botão Não (2x) e na 3ª devolve. */
+  noThief: {
+    lines: [
+      'OPA! Esse botão não vai ser necessário!',
+      'Ordem do coração: confiscar!',
+      'Não aceito essa opção, senhora!',
+      'Missão: proteger o pedido de namoro!',
+      'Esse botão está sob minha custódia!',
+    ],
+    trip: 'AI. O chão também está contra mim.',
+    giveBack: [
+      '...tá bom. Toma. Desculpa.',
+      'O Thiago me programou pra respeitar sua escolha. Pode escolher o que quiser.',
+    ],
+  },
   yesEnding: {
     lines: ['MISSÃO CONCLUÍDA.', 'Novo status desbloqueado: NÓS DOIS.', 'Observação importante: o espaço individual continua sendo uma funcionalidade permanente.'],
     sign: 'Agora posso finalmente fechar essa planilha?',

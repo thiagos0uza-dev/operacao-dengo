@@ -22,7 +22,10 @@ async function advanceUntil(page: Page, target: string, max = 180) {
   }
   throw new Error('não apareceu: ' + target)
 }
-const tap = async (page: Page, sel: string) => (await advanceUntil(page, sel)).dispatchEvent('click')
+const tap = async (page: Page, sel: string) => {
+  await (await advanceUntil(page, sel)).dispatchEvent('click')
+  await page.waitForTimeout(400) // deixa a interface reagir (humanos não tocam em 5 ms)
+}
 const hot = (id: string) => `button.hotspot[data-hotspot="${id}"]:not(.dim)`
 
 async function fastMotion(page: Page, extra: Record<string, unknown> = {}) {
@@ -106,7 +109,13 @@ test('final NÃO é respeitado e funciona', async ({ page }) => {
     await page.waitForTimeout(1300)
   }
   const no = await advanceUntil(page, '[data-testid=answer-no]')
-  await expect(no).toBeEnabled()
+  // o robô confisca o botão duas vezes e devolve na terceira; depois o Não funciona
+  await expect(page.getByTestId('answer-yes')).toBeEnabled()
+  for (let i = 0; i < 12 && !(await page.locator('.no-btn.free').count()); i++) {
+    await no.dispatchEvent('pointerdown')
+    await page.waitForTimeout(2500)
+  }
+  await expect(page.locator('.no-btn.free')).toBeVisible({ timeout: 15000 })
   await no.click()
   await expect(page.getByText('Missão encerrada com respeito.').first()).toBeVisible({ timeout: 30000 })
   await expect(page.locator('.friend-card')).toBeVisible({ timeout: 30000 })
